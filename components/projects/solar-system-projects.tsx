@@ -339,7 +339,7 @@ function OrbitingPlanet({
     planet.id === "idea-lab" ? 300 : 30
   )
   const isHovered = hoveredPlanet === planet.id
-  const animationRef = useRef<number>()
+  const animationRef = useRef<number | null>(null)
 
   useEffect(() => {
     if (isPaused) {
@@ -531,7 +531,10 @@ function SolarSystemDesktop() {
             ))}
           </defs>
 
-          {/* Orbiting planets (rendered first so sun is on top) */}
+          {/* Central Sun (rendered first so it stays behind planets) */}
+          <RealisticSun />
+
+          {/* Orbiting planets (rendered after sun so they are always on top) */}
           {planets.map((planet) => (
             <OrbitingPlanet
               key={planet.id}
@@ -544,9 +547,6 @@ function SolarSystemDesktop() {
               centerY={centerY}
             />
           ))}
-
-          {/* Central Sun */}
-          <RealisticSun />
         </svg>
       </div>
 
@@ -572,9 +572,9 @@ function MobileSolarSystem() {
     <>
       <div 
         className="relative w-full mx-auto" 
-        style={{ overflow: "visible", transform: "scale(0.55)", transformOrigin: "center center", maxHeight: "360px" }}
+        style={{ overflow: "visible", transformOrigin: "center center" }}
       >
-        <svg viewBox="0 0 700 600" className="w-full h-auto" style={{ overflow: "visible" }}>
+        <svg viewBox="50 80 600 440" className="w-full h-auto" style={{ overflow: "visible" }}>
           <defs>
             <radialGradient id="mobile-sun-gradient" cx="35%" cy="35%">
               <stop offset="0%" stopColor="#FFF7AE" />
@@ -596,7 +596,10 @@ function MobileSolarSystem() {
             ))}
           </defs>
 
-          {/* Orbiting planets */}
+          {/* Central Sun (rendered first so it stays behind planets) */}
+          <RealisticSun />
+
+          {/* Orbiting planets (rendered after sun so they are always on top) */}
           {planets.map((planet) => (
             <OrbitingPlanet
               key={planet.id}
@@ -609,9 +612,6 @@ function MobileSolarSystem() {
               centerY={centerY}
             />
           ))}
-
-          {/* Central Sun */}
-          <RealisticSun />
         </svg>
       </div>
 
