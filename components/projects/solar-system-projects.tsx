@@ -38,9 +38,9 @@ const planets: Planet[] = [
     stats: "10 Users | 76 Txns | Base App Listed",
     tags: ["Solidity", "Next.js", "Web3", "Base"],
     links: {
-      live: "https://basecapsule.xyz",
-      github: "https://github.com",
-      basescan: "https://basescan.org",
+      live: "https://basecapsule.space",
+      github: "https://github.com/cyrusweb3x/Crypto-Gift-Time-Capsule",
+      basescan: "https://basescan.org/address/0xc160e1b43203a4d18e4069437bc960248f91d847#code",
     },
     orbitRadius: 120,
     size: 36,
